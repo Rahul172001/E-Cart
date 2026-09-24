@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams,Link } from "react-router-dom"
 import usePdpData from "../Utils/usePdpData"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -29,11 +29,13 @@ const Pdp = ()=>{
                 {pdpSize && <div>{product?.size?.join(", ")}
                </div>}
                 <p>{product?.description}</p>
+                <Link to="/Cart">
                 <button onClick={()=>{
                     inCart 
                     ?dispatch(removeFromCart(numericId))
                     :dispatch(addToCart(product))
-                }}>{inCart ? "Remove" : "Add to Cart"}</button>
+                }}>Checkout</button>
+                </Link>
             </div>
         </div>
     )
