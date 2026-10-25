@@ -13,12 +13,12 @@ const Header = ()=>{
     const isLight = theme==="light"
     const dispatch = useDispatch()
     const handleLanguage = (e)=>{
-        dispatch(changeLanguage(e.target.value))
+        const langData = e.target.value
+        dispatch(changeLanguage(langData))
+        localStorage.setItem("appLanguage",langData)
     }
     const cartItems = useSelector((store)=>store?.cart?.items)
     const selectedLanguage = useSelector((store)=>store?.language?.lang)
-    const prefferedLanguage = useRef(null)
-    console.log("pfl",prefferedLanguage?.current?.value)
     return(
     <header className={isLight? "sticky top-0 z-50 bg-[#1E3A8A] shadow-md" : "sticky top-0 z-50 bg-[#0F172A] shadow-md"}>
     <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -51,7 +51,7 @@ const Header = ()=>{
     {isLight ? `☀️ ${languageList[selectedLanguage]?.light || ""}` : `🌙 ${languageList[selectedLanguage]?.dark || ""}`}</button>
     </li>
     <li className="px-1">
-        <select ref={prefferedLanguage} onChange={handleLanguage}>
+        <select value={selectedLanguage} onChange={handleLanguage}>
             {supported_language?.map((data)=><option key={data?.id} value={data?.id}>{data?.lang}</option>)}
         </select>
     </li>
