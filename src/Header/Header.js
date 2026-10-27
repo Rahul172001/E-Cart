@@ -3,7 +3,6 @@ import useOnlineStatus from "../Utils/useOnlineStatus"
 import { useContext, useRef } from "react"
 import ThemeContext from "../Utils/ThemeContext"
 import { useDispatch, useSelector } from "react-redux"
-import { useState } from "react"
 import { languageList, supported_language } from "../Utils/language"
 import { changeLanguage } from "../StateUtils/LanguageSlice"
 
